@@ -1,0 +1,45 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import '../assets/css/login-style.css';
+import ReactImage from "../assets/svg/react.svg";
+
+const Login = () => {
+	const [userName, setUserName] = useState('');
+	const [password, setPassword] = useState('');
+
+	const handleChangeUserName = (e) => {
+		setUserName(e.target.value);
+	}
+	
+	const handleChangePassword = (e) => {
+		setPassword(e.target.value);
+	}
+
+	const handleLogin = () => {
+		console.log(userName, password);
+	}
+
+	return (
+		<div className="login-page">
+			<div className="logo">
+				<img src={ReactImage} className="logo-image" alt="react-image"/>
+				<h1 className="logo-text">User Web</h1>
+			</div>
+			<h2 className="login-title">Sign in to your account</h2>
+			<div className="login-form">
+				<div className="input-group">
+					<label>Username</label>
+					<input type="text" onChange={handleChangeUserName} value={userName} placeholder="username" />
+				</div>
+				<div className="input-group">
+					<label>Password</label>
+					<input type="password" onChange={handleChangePassword} value={password} placeholder="password" />
+				</div>
+				<p className="dont-have-account">Don&apos;t have an account? <Link to="/signup" className="link-signup">Sign up</Link> </p>
+				<button onClick={handleLogin} className="login-button">Sign in</button>
+			</div>
+		</div>
+	);
+};
+
+export default Login;
