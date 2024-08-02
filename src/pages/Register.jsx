@@ -25,10 +25,12 @@ const Register = (props) => {
 		axios
 		.post('https://reqres.in/api/register', payload)
 		.then((res) => {
-			console.log(res.data);
+			// console.log(res.data);
+			let token = (res.data.token);
 			inputEmail.style.borderColor = '#e0e0e0';
 			inputPassword.style.borderColor = '#e0e0e0';
 			toast.success('Registered successfully');
+			localStorage.setItem("token", token);
 			setTimeout(() => navigate('/login'), 200);
 		})
 		.catch((err) => {
@@ -40,7 +42,9 @@ const Register = (props) => {
 				inputPassword.style.borderColor = '#e0e0e0';
 				inputEmail.focus();
 			} else if (err.response.data.error === 'Missing password') {
-				if(!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)){
+				const regex = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+				if(!regex.test(email)){
 					errors['email'] = 'Please enter the valid email';
 					inputEmail.style.borderColor = 'red';
 					inputEmail.focus();
@@ -56,7 +60,7 @@ const Register = (props) => {
 				errors['password'] = '';
 				inputEmail.style.borderColor = '#e0e0e0';
 				inputPassword.style.borderColor = '#e0e0e0';
-				toast.warning('Failed :' + 'Only defined users succeed registration');
+				toast.error('Failed :' + 'Only defined users succeed registration');
 			}
 			setErrors(errors);
 		})
@@ -80,7 +84,7 @@ const Register = (props) => {
 					<input type="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
 					<span className="alert text-danger">{errors['password']}</span>
 				</div>
-				<p className="dont-have-account">Already have an account? <Link to="/login" className="link-signin">Sign in</Link> </p>
+				<p className="question-account">Already have an account? <Link to="/login" className="link-signin">Sign in</Link> </p>
 				<button onClick={handleRegister} className="register-button">Sign up</button>
 			</div>
 		</div>

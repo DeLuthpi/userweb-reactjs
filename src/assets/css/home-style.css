@@ -1,0 +1,16 @@
+.logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.logo-image {
+	width: 35px;
+	height: 35px;
+}
+
+.logo-text {
+	font-size: 24px;
+	font-weight: 700;
+}

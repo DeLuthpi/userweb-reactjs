@@ -1,14 +1,13 @@
 import logoReact from "./assets/svg/react.svg";
-import { Routes, Route } from "react-router-dom"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
+import { useState } from "react"
+import Router from "./routes/Router";
 
 const App = () => {
+	const token = localStorage.getItem('token');
+	const [isLoggedIn, setIsLoggedIn] = useState(token !== null ? true : false);
+
 	return (
-		<Routes>
-			<Route path="/login" element = {<Login logo={logoReact} />} />
-			<Route path="/register" element = {<Register logo={logoReact} />} />
-		</Routes>
+		<Router isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} logo={logoReact}></Router>
 	)
 }
 export default App;

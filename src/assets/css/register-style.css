@@ -73,7 +73,7 @@
 	border-color: #007bff;
 }
 
-.dont-have-account {
+.question-account {
 	margin-top: 10px;
 	font-size: 14px;
 }
@@ -110,17 +110,6 @@
 	font-size: 14px;
 }
 
-.alert-danger {
-	font-size: 14px;
-	padding: 10px 20px;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	background-color: #f8d7da;
-	color: #721c24;
-	width: 300px;
-}
-
 @media (max-width: 768px) {
 	.register-page {
 		margin-top: -70px;
@@ -131,10 +120,5 @@
 	.register-form {
 		width: 75%;
 		padding: 15px;
-	}
-
-	.alert-message {
-		width: 75%;
-		padding: 10px 15px;
 	}
 }
