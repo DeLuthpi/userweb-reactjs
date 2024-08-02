@@ -15,14 +15,14 @@
 	font-weight: 700;
 }
 
-.login-title {
+.register-title {
 	margin: 0px 0px 20px;
 	font-size: 18px;
 	font-weight: 600;
 	text-align: center;
 }
 
-.login-page {
+.register-page {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -31,7 +31,7 @@
 	margin-top: -100px;
 }
 
-.login-form {
+.register-form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -88,7 +88,7 @@
 	color: #0056b3;
 }
 
-.login-button {
+.register-button {
 	margin-top: 10px;
 	padding: 10px 20px;
 	background-color: #007bff;
@@ -101,19 +101,40 @@
 	width: 100%;
 }
 
-.login-button:hover {
+.register-button:hover {
 	background-color: #0056b3;
 }
 
+.text-danger {
+	color: red;
+	font-size: 14px;
+}
+
+.alert-danger {
+	font-size: 14px;
+	padding: 10px 20px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f8d7da;
+	color: #721c24;
+	width: 300px;
+}
+
 @media (max-width: 768px) {
-	.login-page {
+	.register-page {
 		margin-top: -70px;
 	}
 }
 
 @media (max-width: 480px) {
-	.login-form {
+	.register-form {
 		width: 75%;
 		padding: 15px;
+	}
+
+	.alert-message {
+		width: 75%;
+		padding: 10px 15px;
 	}
 }

@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
+import '../assets/css/login-style.css';
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import '../assets/css/login-style.css';
-import ReactImage from "../assets/svg/react.svg";
 
-const Login = () => {
+const Login = (props) => {
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -22,7 +22,7 @@ const Login = () => {
 	return (
 		<div className="login-page">
 			<div className="logo">
-				<img src={ReactImage} className="logo-image" alt="react-image"/>
+				<img src={props?.logo} className="logo-image" alt="react-image"/>
 				<h1 className="logo-text">User Web</h1>
 			</div>
 			<h2 className="login-title">Sign in to your account</h2>
@@ -35,7 +35,7 @@ const Login = () => {
 					<label>Password</label>
 					<input type="password" onChange={handleChangePassword} value={password} placeholder="password" />
 				</div>
-				<p className="dont-have-account">Don&apos;t have an account? <Link to="/signup" className="link-signup">Sign up</Link> </p>
+				<p className="dont-have-account">Don&apos;t have an account? <Link to="/register" className="link-signup">Sign up</Link> </p>
 				<button onClick={handleLogin} className="login-button">Sign in</button>
 			</div>
 		</div>
