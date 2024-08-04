@@ -77,12 +77,12 @@ const Register = (props) => {
 				<div className="input-group">
 					<label>Email</label>
 					<input type="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" autoComplete="off" />
-					<span className="alert text-danger">{errors['email']}</span>
+					<span className="invalid-message">{errors['email']}</span>
 				</div>
 				<div className="input-group">
 					<label>Password</label>
 					<input type="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
-					<span className="alert text-danger">{errors['password']}</span>
+					<span className="invalid-message">{errors['password']}</span>
 				</div>
 				<p className="question-account">Already have an account? <Link to="/login" className="link-signin">Sign in</Link> </p>
 				<button onClick={handleRegister} className="register-button">Sign up</button>

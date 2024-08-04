@@ -2,13 +2,14 @@
 import '../assets/css/login-style.css';
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Login = (props) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState([]);
+	const navigate = useNavigate();
 
 	const handleLogin = () => {
 		const payload = {
@@ -27,13 +28,14 @@ const Login = (props) => {
 			// console.log(res.data);
 			inputEmail.style.borderColor = '#e0e0e0';
 			inputPassword.style.borderColor = '#e0e0e0';
-			localStorage.setItem("token", res.data.token);
-			window.location.reload();
+			localStorage.setItem("access_token", res.data.token);
+			toast.success('Logged in successfully');
+			setTimeout(() => navigate('/'), 2000);
 		})
 		.catch((err) => {
 			localStorage.clear();
 
-			console.log(err.response);
+			// console.log(err.response);
 			if (err.response.data.error === 'Missing email or username') {
 				errors['email'] = 'email is required';
 				errors['password'] = '';
@@ -76,12 +78,12 @@ const Login = (props) => {
 				<div className="input-group">
 					<label>Email</label>
 					<input type="text" id="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" autoComplete="off" />
-					<span className="alert text-danger">{errors['email']}</span>
+					<span className="invalid-message">{errors['email']}</span>
 				</div>
 				<div className="input-group">
 					<label>Password</label>
 					<input type="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
-					<span className="alert text-danger">{errors['password']}</span>
+					<span className="invalid-message">{errors['password']}</span>
 				</div>
 				<p className="question-account">Don&apos;t have an account? <Link to="/register" className="link-signup">Sign up</Link> </p>
 				<button onClick={handleLogin} className="login-button">Sign in</button>
