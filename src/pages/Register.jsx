@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import '../assets/css/register-style.css';
+import '../assets/css/auth-style.css';
 import axios from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -10,82 +10,116 @@ const Register = (props) => {
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState([]);
 	const navigate = useNavigate();
+	const emailFocus = useRef(null);
+	const passwordFocus = useRef(null);
+	const [invalidEmail, setInvalidEmail] = useState('');
+	const [invalidPassword, setInvalidPassword] = useState('');
 
-	const handleRegister = () => {
+	const handleRegister = (e) => {
+		e.preventDefault();
+
 		const payload = {
 			email: email,
 			password: password,
 		};
 
-		const inputEmail = document.getElementById("email");
-		const inputPassword = document.getElementById("password");
-
 		setErrors([]);
 
 		axios
 		.post('https://reqres.in/api/register', payload)
+		// eslint-disable-next-line no-unused-vars
 		.then((res) => {
 			// console.log(res.data);
-			let token = (res.data.token);
-			inputEmail.style.borderColor = '#e0e0e0';
-			inputPassword.style.borderColor = '#e0e0e0';
-			toast.success('Registered successfully');
-			localStorage.setItem("token", token);
-			setTimeout(() => navigate('/login'), 200);
+			setInvalidEmail('');
+			setInvalidPassword('');
+
+			toast.success('Registered successfully. Redirect to login page...');
+			setTimeout(() => navigate('/login'), 2500);
 		})
+		// eslint-disable-next-line no-unused-vars
 		.catch((err) => {
 			// console.log(err.response);
-			if (err.response.data.error === 'Missing email or username') {
-				errors['email'] = 'email is required';
+			const regex = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+			if (email === '') {
+				errors['email'] = 'Email is required';
 				errors['password'] = '';
-				inputEmail.style.borderColor = 'red';
-				inputPassword.style.borderColor = '#e0e0e0';
-				inputEmail.focus();
-			} else if (err.response.data.error === 'Missing password') {
-				const regex = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+				if (password !== '') setInvalidPassword('');
+				setInvalidEmail('is-invalid');
+				emailFocus.current.focus();
+			} else if (password === '') {
+				if(!regex.test(email)){
+					errors['email'] = 'Please enter the valid email';
+					setInvalidEmail('is-invalid');
+					emailFocus.current.focus();
+				} else {
+					errors['email'] = '';
+					errors['password'] = 'Password is required';
+					setInvalidEmail('');
+					setInvalidPassword('is-invalid');
+					passwordFocus.current.focus();
+				}
+			} else {
+				setInvalidEmail('');
+				setInvalidPassword('');
+				errors['email'] = '';
+				errors['password'] = '';
 
 				if(!regex.test(email)){
 					errors['email'] = 'Please enter the valid email';
-					inputEmail.style.borderColor = 'red';
-					inputEmail.focus();
+					setInvalidEmail('is-invalid');
+					emailFocus.current.focus();
 				} else {
-					errors['email'] = '';
-					errors['password'] = 'password is required';
-					inputEmail.style.borderColor = '#e0e0e0';
-					inputPassword.style.borderColor = 'red';
-					inputPassword.focus();
+					toast.error('Failed :' + 'Only defined users succeed registration');
 				}
-			} else {
-				errors['email'] = '';
-				errors['password'] = '';
-				inputEmail.style.borderColor = '#e0e0e0';
-				inputPassword.style.borderColor = '#e0e0e0';
-				toast.error('Failed :' + 'Only defined users succeed registration');
 			}
 			setErrors(errors);
 		})
 	}
 
 	return (
-		<div className="register-page">
-			<div className="logo">
-				<img src={props?.logo} className="logo-image" alt="logo-react"/>
-				<h1 className="logo-text">User Web</h1>
-			</div>
-			<h2 className="register-title">Create a new account</h2>
-			<div className="register-form">
-				<div className="input-group">
-					<label>Email</label>
-					<input type="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" autoComplete="off" />
-					<span className="invalid-message">{errors['email']}</span>
+		<div className="page-header">
+			<div className="container">
+				<div className="row">
+					<div className="column-form">
+						<div className="card card-plain">
+							<div className="card-header css-card-header">
+								<h4 className="css-header-h4">{props?.webName}</h4>
+								<p className="css-header-p">Enter your email and password to register</p>
+							</div>
+							<div className="card-body css-card-body">
+								<form className="form-signup" onSubmit={handleRegister}>
+									<label htmlFor="email">Email</label>
+									<div className="css-input">
+										<input type="email" name="email" id="email" ref={emailFocus} onChange={(e) => setEmail(e.target.value)} className={`form-control ${invalidEmail}`} placeholder="Email" value={email} autoComplete="off" />
+										<span className="invalid-message">{errors['email']}</span>
+									</div>
+									<label htmlFor="password">Password</label>
+									<div className="css-input">
+										<input type="password" name="password" id="password" ref={passwordFocus} onChange={(e) => setPassword(e.target.value)} className={`form-control ${invalidPassword}`} placeholder="Password" value={password} />
+										<span className="invalid-message">{errors['password']}</span>
+									</div>
+									<div className="css-button">
+										<button type="submit" className="btn bg-gradient-secondary css-btn-sign">Sign up</button>
+									</div>
+								</form>
+							</div>
+							<div className="card-footer css-card-footer">
+								<p className="css-card-footer-p">Already have an account?&ensp;<Link to="/login" className="css-card-footer-a">Sign in</Link></p>
+							</div>
+						</div>
+					</div>
+					<div className="column-image">
+						<div className="css-layout-img">
+							<img src={props?.patternLines} alt="pattern-lines" className="css-pattern-lines" />
+							<div className="css-illustration">
+								<img className="css-illustration-img" src={props?.signUpIllustration} alt="sign-up-illustration" />
+							</div>
+							<h4 className="css-web-nm">{props?.webName}</h4>
+							<p className="css-copyright">{`Copyright © ${new Date().getFullYear()} — Designed by `} <Link to="https://github.com/DeLuthpi" target="_blank" className="css-footer-link">De Luthpi</Link></p>
+						</div>
+					</div>
 				</div>
-				<div className="input-group">
-					<label>Password</label>
-					<input type="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
-					<span className="invalid-message">{errors['password']}</span>
-				</div>
-				<p className="question-account">Already have an account? <Link to="/login" className="link-signin">Sign in</Link> </p>
-				<button onClick={handleRegister} className="register-button">Sign up</button>
 			</div>
 		</div>
 	);

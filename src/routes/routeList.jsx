@@ -1,36 +1,38 @@
 /* eslint-disable react/prop-types */
-import logo from "../assets/svg/react.svg";
 import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Home from "../pages/Home"
 import NotFound from "../pages/NotFound"
 import { ProtectedRoute, ProtectedAfterLogin } from "./ProtectedRoute";
+import { logo, signUpIllustration, signInIllustration, patternLines, error404, webName } from "../helpers/const";
 
 export const routeList = [
 	{
 		path: "/",
 		element:
 		<ProtectedRoute>
-			<Home logo={logo} />
+			<Home logo={logo} webName={webName} />
 		</ProtectedRoute>
 	},
 	{
 		path: "/login",
 		element:
 		<ProtectedAfterLogin>
-			<Login logo={logo} />
+			<Login logo={logo} webName={webName} signInIllustration={signInIllustration} patternLines={patternLines} />
 		</ProtectedAfterLogin>
 	},
 	{
 		path: "/register",
 		element:
 		<ProtectedAfterLogin>
-			<Register logo={logo} />
+			<Register logo={logo} webName={webName} signUpIllustration={signUpIllustration} patternLines={patternLines} />
 		</ProtectedAfterLogin>
 	},
 	{
 		path: "*",
 		element:
-		<NotFound logo={logo} />
+		<ProtectedRoute>
+			<NotFound logo={logo} webName={webName} error404={error404} />
+		</ProtectedRoute>
 	},
 ];

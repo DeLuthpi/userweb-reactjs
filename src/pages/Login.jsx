@@ -1,24 +1,38 @@
 /* eslint-disable react/prop-types */
-import '../assets/css/login-style.css';
+import '../assets/css/auth-style.css';
 import axios from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { PuffLoader } from 'react-spinners';
 
 const Login = (props) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState([]);
 	const navigate = useNavigate();
+	const emailFocus = useRef(null);
+	const passwordFocus = useRef(null);
+	const [invalidEmail, setInvalidEmail] = useState('');
+	const [invalidPassword, setInvalidPassword] = useState('');
+	const [loader, setLoader] = useState(false);
+	const [showBgLoader, setShowBgLoader] = useState(false);
 
-	const handleLogin = () => {
+	const showLoader = () => {
+		setLoader(true);
+		setTimeout(() => {
+			setLoader(false)
+			setTimeout(() => navigate('/'), 300)
+		}, 2500);
+	};
+
+	const handleLogin = (e) => {
+		e.preventDefault();
+
 		const payload = {
 			email: email,
 			password: password,
 		};
-
-		const inputEmail = document.getElementById("email");
-		const inputPassword = document.getElementById("password");
 
 		setErrors([]);
 
@@ -26,68 +40,110 @@ const Login = (props) => {
 		.post('https://reqres.in/api/login', payload)
 		.then((res) => {
 			// console.log(res.data);
-			inputEmail.style.borderColor = '#e0e0e0';
-			inputPassword.style.borderColor = '#e0e0e0';
-			localStorage.setItem("access_token", res.data.token);
-			toast.success('Logged in successfully');
-			setTimeout(() => navigate('/'), 2000);
-		})
-		.catch((err) => {
-			localStorage.clear();
+			setInvalidEmail('');
+			setInvalidPassword('');
 
+			localStorage.setItem('access_token', res.data.token);
+			setShowBgLoader(true);
+			setTimeout(() => showLoader(), 50);
+		})
+		// eslint-disable-next-line no-unused-vars
+		.catch((err) => {
 			// console.log(err.response);
-			if (err.response.data.error === 'Missing email or username') {
-				errors['email'] = 'email is required';
+			localStorage.clear();
+			const regex = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+			if (email === '') {
+				errors['email'] = 'Email is required';
 				errors['password'] = '';
-				inputEmail.style.borderColor = 'red';
-				inputPassword.style.borderColor = '#e0e0e0';
-				inputEmail.focus();
-			} else if (err.response.data.error === 'Missing password') {
-				const regex = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+				if (password !== '') setInvalidPassword('');
+				setInvalidEmail('is-invalid');
+				emailFocus.current.focus();
+			} else if (password === '') {
+				if(!regex.test(email)){
+					errors['email'] = 'Please enter the valid email';
+					setInvalidEmail('is-invalid');
+					emailFocus.current.focus();
+				} else {
+					errors['email'] = '';
+					errors['password'] = 'Password is required';
+					setInvalidEmail('');
+					setInvalidPassword('is-invalid');
+					passwordFocus.current.focus();
+				}
+			} else {
+				setInvalidEmail('');
+				setInvalidPassword('');
+				errors['email'] = '';
+				errors['password'] = '';
 
 				if(!regex.test(email)){
 					errors['email'] = 'Please enter the valid email';
-					inputEmail.style.borderColor = 'red';
-					inputEmail.focus();
+					setInvalidEmail('is-invalid');
+					emailFocus.current.focus();
 				} else {
-					errors['email'] = '';
-					errors['password'] = 'password is required';
-					inputEmail.style.borderColor = '#e0e0e0';
-					inputPassword.style.borderColor = 'red';
-					inputPassword.focus();
+					toast.error('Failed :' + 'Only defined users succeed registration');
 				}
-			} else {
-				errors['email'] = '';
-				errors['password'] = '';
-				inputEmail.style.borderColor = '#e0e0e0';
-				inputPassword.style.borderColor = '#e0e0e0';
-				toast.error('Failed :' + 'User not found');
 			}
 			setErrors(errors);
 		})
 	}
 
 	return (
-		<div className="login-page">
-			<div className="logo">
-				<img src={props?.logo} className="logo-image" alt="react-image"/>
-				<h1 className="logo-text">User Web</h1>
-			</div>
-			<h2 className="login-title">Sign in to your account</h2>
-			<div className="login-form">
-				<div className="input-group">
-					<label>Email</label>
-					<input type="text" id="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" autoComplete="off" />
-					<span className="invalid-message">{errors['email']}</span>
+		<div className="page-loader">
+			{showBgLoader && <div className="bg-loader"></div>}
+			<div className="page-header">
+				<div className="container">
+					<div className="row">
+						<div className="column-form">
+							<div className="card card-plain">
+								<div className="card-header css-card-header">
+									<h4 className="css-header-h4">{props?.webName}</h4>
+									<p className="css-header-p">Enter your email and password to login</p>
+								</div>
+								<div className="card-body css-card-body">
+									<form className="form-signup" onSubmit={handleLogin}>
+										<label htmlFor="email">Email</label>
+										<div className="css-input">
+											<input type="email" name="email" id="email" ref={emailFocus} onChange={(e) => setEmail(e.target.value)} className={`form-control ${invalidEmail}`} placeholder="Email" value={email} autoComplete="off" />
+											<span className="invalid-message">{errors['email']}</span>
+										</div>
+										<label htmlFor="password">Password</label>
+										<div className="css-input">
+											<input type="password" name="password" id="password" ref={passwordFocus} onChange={(e) => setPassword(e.target.value)} className={`form-control ${invalidPassword}`} placeholder="Password" value={password} />
+											<span className="invalid-message">{errors['password']}</span>
+										</div>
+										<div className="css-button">
+											<button type="submit" className="btn bg-gradient-secondary css-btn-sign">Sign in</button>
+										</div>
+									</form>
+								</div>
+								<div className="card-footer css-card-footer">
+									<p className="css-card-footer-p">Don&apos;t have an account?&ensp;<Link to="/register" className="css-card-footer-a">Sign up</Link></p>
+								</div>
+							</div>
+						</div>
+						<div className="column-image">
+							<div className="css-layout-img">
+								<img src={props?.patternLines} alt="pattern-lines" className="css-pattern-lines" />
+								<div className="css-illustration">
+									<img className="css-illustration-img" src={props?.signInIllustration} alt="sign-in-illustration" />
+								</div>
+								<h4 className="css-web-nm">{props?.webName}</h4>
+								<p className="css-copyright">{`Copyright © ${new Date().getFullYear()} — Designed by `} <Link to="https://github.com/DeLuthpi" target="_blank" className="css-footer-link">De Luthpi</Link></p>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div className="input-group">
-					<label>Password</label>
-					<input type="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
-					<span className="invalid-message">{errors['password']}</span>
-				</div>
-				<p className="question-account">Don&apos;t have an account? <Link to="/register" className="link-signup">Sign up</Link> </p>
-				<button onClick={handleLogin} className="login-button">Sign in</button>
 			</div>
+			<PuffLoader
+				color={"#F5F5F5"}
+				cssOverride={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: '50' }}
+				loading={loader}
+				size={150}
+				aria-label="Loading Spinner"
+				data-testid="loader"
+			/>
 		</div>
 	);
 };
