@@ -1,0 +1,126 @@
+:root {
+	--error-logo-padding-y: 0.59375rem;
+	--error-logo-margin-end: 1rem;
+	--error-logo-font-size: 1.25rem;
+	--error-logo-color: rgba(52, 71, 103, 0.9);
+	--error-logo-hover-color: rgba(52, 71, 103, 0.9);
+}
+
+.error-header {
+	--padding-x: 1rem;
+	--padding-y: 0.5rem;
+	padding: var(--padding-y) var(--padding-x);
+	margin-bottom: 3rem;
+	margin-top: 3rem;
+}
+
+.error-logo {
+	font-weight: 700 !important;
+	margin-left: 1rem !important;
+	padding-top: var(--error-logo-padding-y);
+	padding-bottom: var(--error-logo-padding-y);
+	margin-right: var(--error-logo-margin-end);
+	font-size: var(--error-logo-font-size);
+	color: var(--error-logo-color);
+	white-space: nowrap;
+}
+
+.error-logo:hover,
+.error-logo:focus {
+	color: var(--error-logo-hover-color);
+}
+
+.error-logo img {
+	width: auto !important;
+	opacity: 1;
+	padding-right: 0.5rem;
+}
+
+.error-logo-img {
+	height: 100% !important;
+}
+
+.error-section {
+	overflow: hidden !important;
+	overflow-anchor: none;
+	-ms-overflow-style: none;
+	touch-action: auto;
+	-ms-touch-action: auto;
+}
+
+.col-text {
+	margin-top: auto !important;
+	margin-bottom: auto !important;
+}
+
+.error-h1 {
+	font-size: calc(1.625rem + 4.5vw);
+	font-weight: 700;
+	line-height: 1.2;
+	color: #ea0606 !important;
+	background-image: linear-gradient(310deg, #d60808, #ff6690);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	position: relative;
+	z-index: 1;
+}
+
+.lead {
+	font-size: 1.25rem;
+	line-height: 1.625;
+}
+
+.lead,
+.p,
+p {
+	font-weight: 400;
+}
+
+.btn-to-homepage {
+	color: #fff !important;
+	background-image: linear-gradient(310deg, #141727, #3a416f);
+	margin-top: 1.5rem !important;
+}
+
+.col-image {
+	margin-top: auto !important;
+	margin-bottom: auto !important;
+	position: relative !important;
+}
+
+.error-image {
+	width: 100% !important;
+	position: relative !important;
+}
+
+h2 {
+	font-weight: 700 !important;
+}
+
+img,
+svg {
+	vertical-align: middle;
+}
+
+@media (max-width: 992px) {
+	.row > * {
+		flex-shrink: 1 !important;
+	}
+}
+
+@media (min-width: 992px) {
+	.error-logo {
+		margin-left: 0 !important;
+	}
+
+	.col-text {
+		flex: 0 0 auto;
+		width: 50%;
+	}
+
+	.col-image {
+		flex: 0 0 auto;
+		width: 50%;
+	}
+}
