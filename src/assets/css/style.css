@@ -170,6 +170,26 @@ h6,
 	font-size: 1rem;
 }
 
+hr {
+	margin: 1rem 0;
+	color: inherit;
+	border: 0;
+	border-top: 1px solid;
+	opacity: 0.25;
+}
+
+hr {
+	border-top: none !important;
+	height: 1px;
+}
+
+ol,
+ul,
+dl {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+
 p {
 	margin-top: 0;
 	margin-bottom: 1rem;
@@ -652,31 +672,31 @@ label,
 	-webkit-appearance: none;
 }
 
-.btn-secondary,
-.btn.bg-gradient-secondary {
+.btn-dark,
+.btn.bg-gradient-dark {
 	color: #fff;
 }
 
-.btn-secondary:hover,
-.btn.bg-gradient-secondary:hover {
+.btn-dark:hover,
+.btn.bg-gradient-dark:hover {
 	color: #fff;
 }
 
-.btn-secondary:hover,
-.btn.bg-gradient-secondary:hover {
-	background-color: #8392ab;
-	border-color: #8392ab;
+.btn-dark:hover,
+.btn.bg-gradient-dark:hover {
+	background-color: #344767;
+	border-color: #344767;
 }
 
-.btn-secondary .btn.bg-outline-secondary,
-.btn.bg-gradient-secondary .btn.bg-outline-secondary {
-	border: 1px solid #8392ab;
+.btn-dark .btn.bg-outline-dark,
+.btn.bg-gradient-dark .btn.bg-outline-dark {
+	border: 1px solid #344767;
 }
 
-.btn-secondary.focus,
-.btn-secondary:focus,
-.btn.bg-gradient-secondary.focus,
-.btn.bg-gradient-secondary:focus {
+.btn-dark.focus,
+.btn-dark:focus,
+.btn.bg-gradient-dark.focus,
+.btn.bg-gradient-dark:focus {
 	color: #fff;
 }
 

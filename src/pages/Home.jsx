@@ -1,18 +1,34 @@
 /* eslint-disable react/prop-types */
 import '../assets/css/home-style.css';
+import Navbar from '../components/Navbar';
+import SideNavbar from '../components/SideNav';
 
-const Home = (props) => {
-
-	const handleLogout = () => {
-		localStorage.clear();
-		window.location.reload();
-	}
+const Home = () => {
 
 	return (
-		<div className="home-page">
-			<img src={props?.logo} className="logo-image" alt="react-image"/>
-			<h1>Home page</h1>
-			<button onClick={handleLogout} type="button">Logout</button>
+		<div className="main-page">
+			<SideNavbar />
+			<main className="main-section">
+				<Navbar pages={'Home'} subPages={''} />
+				<section className='home-section'>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+					<h1>Home page</h1>
+				</section>
+			</main>
 		</div>
 	);
 };

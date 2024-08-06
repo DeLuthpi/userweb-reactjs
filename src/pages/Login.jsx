@@ -5,8 +5,9 @@ import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { PuffLoader } from 'react-spinners';
+import { webName, signInIllustration, patternLines } from "../helpers/const";
 
-const Login = (props) => {
+const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState([]);
@@ -98,7 +99,7 @@ const Login = (props) => {
 						<div className="column-form">
 							<div className="card card-plain">
 								<div className="card-header css-card-header">
-									<h4 className="css-header-h4">{props?.webName}</h4>
+									<h4 className="css-header-h4">{webName}</h4>
 									<p className="css-header-p">Enter your email and password to login</p>
 								</div>
 								<div className="card-body css-card-body">
@@ -114,7 +115,7 @@ const Login = (props) => {
 											<span className="invalid-message">{errors['password']}</span>
 										</div>
 										<div className="css-button">
-											<button type="submit" className="btn bg-gradient-secondary css-btn-sign">Sign in</button>
+											<button type="submit" className="btn bg-gradient-dark css-btn-sign">Sign in</button>
 										</div>
 									</form>
 								</div>
@@ -125,11 +126,11 @@ const Login = (props) => {
 						</div>
 						<div className="column-image">
 							<div className="css-layout-img">
-								<img src={props?.patternLines} alt="pattern-lines" className="css-pattern-lines" />
+								<img src={patternLines} alt="pattern-lines" className="css-pattern-lines" />
 								<div className="css-illustration">
-									<img className="css-illustration-img" src={props?.signInIllustration} alt="sign-in-illustration" />
+									<img className="css-illustration-img" src={signInIllustration} alt="sign-in-illustration" />
 								</div>
-								<h4 className="css-web-nm">{props?.webName}</h4>
+								<h4 className="css-web-nm">{webName}</h4>
 								<p className="css-copyright">{`Copyright © ${new Date().getFullYear()} — Designed by `} <Link to="https://github.com/DeLuthpi" target="_blank" className="css-footer-link">De Luthpi</Link></p>
 							</div>
 						</div>

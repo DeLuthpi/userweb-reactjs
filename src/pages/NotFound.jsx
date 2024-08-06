@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import '../assets/css/error404-style.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { logo, webName, error404 } from "../helpers/const";
 
-const NotFound = (props) => {
+const NotFound = () => {
 	const navigate = useNavigate();
 
 	const handleClick = () => {
@@ -14,8 +15,8 @@ const NotFound = (props) => {
 			<div className="error-header">
 				<div className="container">
 					<Link className="error-logo " to="/">
-						<img src={props?.logo} className="navbar-brand-img h-100" alt="logo-image" />
-						{props?.webName}
+						<img src={logo} className="navbar-brand-img h-100" alt="logo-image" />
+						{webName}
 					</Link>
 				</div>
 			</div>
@@ -29,7 +30,7 @@ const NotFound = (props) => {
 							<button type="button" onClick={handleClick} className="btn btn-to-homepage">Go to Homepage</button>
 						</div>
 						<div className="col-image">
-							<img className="error-image" src={props?.error404} alt="error-404" />
+							<img className="error-image" src={error404} alt="error-404" />
 						</div>
 					</div>
 				</div>
