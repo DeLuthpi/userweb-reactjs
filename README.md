@@ -1,15 +1,14 @@
-# Mini project user web
+# Mini project user web using React.js Framework
 
 This mini project was created to fulfill the weekly assignment for React JS material from the front end developer bootcamp at [dibimbing.id](https://dibimbing.id)
 
-This website is built using the react.js framework, following to install react
-Go to your command line and execute the following :
+This website is built using the react.js framework, following to install react : go to your command line and execute the following
 
 ```bash
 npm create vite FOLDER_NAME -- --template react
 ```
 
-## Libraries used on the website
+## List of libraries used in building this website :
 
 ### Axios for HTTP request
 
@@ -55,7 +54,7 @@ npm install --save @fortawesome/react-fontawesome
 
 ## List of completed tasks
 
--   [x] Build web using React.js
+-   [x] Build website using react.js framework
 -   [x] Users can register using API endpoints
 -   [x] Users can log in using API endpoints
 -   [ ] Users can see all user lists on the website
