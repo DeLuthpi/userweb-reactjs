@@ -6,7 +6,7 @@ import SideNavbar from '../components/SideNav';
 const Home = () => {
 
 	return (
-		<div className="main-page">
+		<div className="main-page sidenav-show " id="main-page">
 			<SideNavbar />
 			<main className="main-section">
 				<Navbar pages={'Home'} subPages={''} />

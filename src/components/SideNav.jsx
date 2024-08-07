@@ -3,6 +3,7 @@ import '../assets/css/sidenavbar-style.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { logo, webName, sidenavMenu } from "../helpers/const";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SideNavbar = () => {
 
@@ -18,7 +19,7 @@ const SideNavbar = () => {
 	}
 
 	return (
-		<aside className="sidenavbar">
+		<aside className="sidenavbar " id="sidenavbar">
 			<div className="sidenav-header">
 				<Link className="sidenav-logo" to="/">
 					<img src={logo} className="sidenav-logo-img" alt="sidenav-logo" />
@@ -33,11 +34,7 @@ const SideNavbar = () => {
 							<li className="nav-item" key={list?.id}>
 								<Link className={`nav-link ${currentPage === list?.navRoute ? "active" : ""}`} to={list?.navRoute} onClick={handleActive}>
 									<div className="icon icon-page">
-										<i data-fa-i2svg>
-											<svg className={`svg-inline--fa fa-${list?.navIcon} fa-w-16`} viewBox="0 0 640 640" aria-hidden="true" data-prefix="fas" data-icon={list?.navIcon} role="img" xmlns="http://www.w3.org/2000/svg" data-fa-i2svg="">
-												<path fill="currentColor" className="color-background" d={list?.pathSvg}></path>
-											</svg>
-										</i>
+										<FontAwesomeIcon icon={list?.navIcon} />
 									</div>
 									<span className="nav-link-text ms-1">{list?.navName}</span>
 								</Link>

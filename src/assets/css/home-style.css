@@ -4,6 +4,10 @@
 	padding-top: 1.5rem;
 }
 
+.main-section {
+	transition-duration: 300ms;
+}
+
 .home-section {
 	margin: 1.5rem;
 	padding-left: 1rem;
@@ -19,5 +23,9 @@
 @media (min-width: 1200px) {
 	.main-section {
 		margin-left: 17.125rem;
+	}
+
+	.sidenav-pinned .main-section {
+		margin-left: 7.5rem;
 	}
 }

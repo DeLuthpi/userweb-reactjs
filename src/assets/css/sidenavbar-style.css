@@ -21,6 +21,7 @@
 	-ms-overflow-style: none;
 	touch-action: auto;
 	-ms-touch-action: auto;
+	transition-duration: 300ms;
 }
 
 .sidenav-header {
@@ -28,7 +29,7 @@
 }
 
 .sidenav-logo {
-	padding: 1.5rem 2rem;
+	padding: 1.5rem 1.5rem 1.5rem 2rem;
 	display: block;
 	color: #344767;
 	margin: 0 !important;
@@ -64,7 +65,7 @@
 	touch-action: auto;
 	-ms-touch-action: auto;
 	width: auto !important;
-	height: auto !important;
+	height: 100vh !important;
 }
 
 .sidenav-nav {
@@ -95,7 +96,7 @@
 	white-space: nowrap;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	font-weight: 500;
+	font-weight: 400;
 	color: #67748e;
 	font-size: 0.875rem;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
@@ -145,15 +146,15 @@
 	justify-content: center !important;
 }
 
-.sidenav-nav > .nav-item > .nav-link.active .icon svg .color-background {
+.sidenav-nav > .nav-item > .nav-link.active .icon svg path {
 	fill: #fff;
 }
 
-.sidenav-nav > .nav-item > .nav-link .icon svg .color-background {
+.sidenav-nav > .nav-item > .nav-link .icon svg path {
 	fill: #3a416f;
 }
 
-.sidenav-nav > .nav-item:hover > .nav-link .icon svg .color-background {
+.sidenav-nav > .nav-item:hover > .nav-link .icon svg path {
 	fill: #fff;
 	transition-duration: 500ms;
 }
@@ -163,4 +164,49 @@
 	transition: 0.3s ease;
 	opacity: 1;
 	margin-left: 0.25rem !important;
+}
+
+@media (max-width: 1199.98px) {
+	.sidenav-show.sidenav-pinned .sidenavbar {
+		transform: translateX(0);
+	}
+
+	.sidenav-show .sidenavbar {
+		transform: translateX(-17.125rem);
+	}
+
+	.sidenav-show.sidenav-pinned .sidenavbar.bg-white {
+		background-color: #fff !important;
+	}
+
+	.nav-link.active {
+		background-color: #e5e4e2;
+	}
+
+	.nav-link:hover {
+		background-color: #e5e4e2;
+	}
+}
+
+@media (min-width: 1200px) {
+	.sidenav-pinned .sidenavbar {
+		max-width: 6rem !important;
+	}
+
+	.sidenav-pinned .sidenavbar .sidenav-logo img {
+		width: auto !important;
+	}
+
+	.sidenav-pinned .nav-item .nav-link .icon {
+		padding: 10px;
+	}
+
+	.sidenav-pinned .nav-item .nav-link .nav-link-text {
+		opacity: 0;
+		width: 0;
+	}
+
+	.sidenav-pinned .sidenav-logo span {
+		opacity: 0;
+	}
 }

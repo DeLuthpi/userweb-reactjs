@@ -88,7 +88,7 @@ body {
 	line-height: var(--body-line-height);
 	color: var(--body-color);
 	text-align: var(--body-text-align);
-	background-color: var(--body-bg);
+	background-color: var(--gray-100);
 	-webkit-text-size-adjust: 100%;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -301,9 +301,9 @@ button:not(:disabled),
 .form-control:focus {
 	color: #495057;
 	background-color: #fff;
-	border-color: #e293d3;
+	border-color: #00cccc;
 	outline: 0;
-	box-shadow: 0 0 0 2px #e9aede;
+	box-shadow: 0 0 0 2px #00cccc;
 }
 
 .form-control::-webkit-date-and-time-value {
