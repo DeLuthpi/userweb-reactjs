@@ -12,7 +12,7 @@ npm create vite FOLDER_NAME -- --template react
 
 ### Axios for HTTP request
 
-following to install axios :
+following to install [axios](https://axios-http.com/) :
 
 ```bash
 npm install axios
@@ -20,7 +20,7 @@ npm install axios
 
 ### React-router-dom for Navigation
 
-following to install React-router-dom :
+following to install [React-router-dom](https://reactrouter.com/) :
 
 ```bash
 npm install react-router-dom
@@ -28,7 +28,7 @@ npm install react-router-dom
 
 ### React-toasify for notification
 
-following to install [React-toasify]('https://www.npmjs.com/package/react-toastify') :
+following to install [React-toasify](https://www.npmjs.com/package/react-toastify) :
 
 ```bash
 npm install --save react-toasify
@@ -36,7 +36,7 @@ npm install --save react-toasify
 
 ### React-spinners for animation in login page
 
-following to install [React-spinners]('https://www.npmjs.com/package/react-spinners') :
+following to install [React-spinners](https://www.npmjs.com/package/react-spinners) :
 
 ```bash
 npm install --save react-spinners
@@ -44,7 +44,7 @@ npm install --save react-spinners
 
 ### Fontawesome for create icon
 
-following to install [Fontawesome]('https://fontawesome.com/') :
+following to install [Fontawesome](https://fontawesome.com/) :
 
 ```bash
 npm install --save @fortawesome/fontawesome-svg-core
@@ -55,8 +55,8 @@ npm install --save @fortawesome/react-fontawesome
 ## List of completed tasks
 
 -   [x] Build website using react.js framework
--   [x] Users can register using API endpoints
--   [x] Users can log in using API endpoints
+-   [x] Users can register using API endpoints [reqres](https://reqres.in/)
+-   [x] Users can log in using API endpoints [reqres](https://reqres.in/)
 -   [ ] Users can see all user lists on the website
 -   [ ] Users can see page details for each user
 -   [ ] There is pagination on the Home Page
