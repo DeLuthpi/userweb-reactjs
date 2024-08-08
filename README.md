@@ -52,13 +52,13 @@ npm install --save @fortawesome/free-solid-svg-icons
 npm install --save @fortawesome/react-fontawesome
 ```
 
-## List of completed tasks
+## List of completed tasks :
 
 -   [x] Build website using react.js framework
 -   [x] Users can register using API endpoints [reqres](https://reqres.in/)
 -   [x] Users can log in using API endpoints [reqres](https://reqres.in/)
--   [ ] Users can see all user lists on the website
--   [ ] Users can see page details for each user
+-   [x] Users can see all user lists on the website
+-   [x] Users can see page details for each user
 -   [ ] There is pagination on the Home Page
 -   [x] The website has implemented Protected Routes
 -   [x] The website has implemented a responsive website
