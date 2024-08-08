@@ -1,0 +1,182 @@
+.main-page {
+	background-color: #f8f9fa;
+	height: auto;
+	padding-top: 1.5rem;
+}
+
+.main-section {
+	transition-duration: 300ms;
+}
+
+.userdetail-section {
+	margin: 1.5rem;
+}
+
+.udch-flex {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.udch-col {
+	flex: 0 0 auto;
+}
+
+.udch-text {
+	font-weight: 600;
+	line-height: 1.375;
+	margin-bottom: 0;
+}
+
+.udch-btn {
+	--btn-padding-y: 0.5rem !important;
+	--btn-padding-x: 1rem !important;
+	--btn-font-size: 0.75rem !important;
+	--btn-border-radius: 0.5rem !important;
+	margin: 0 !important;
+	text-transform: none !important;
+	position: relative;
+	border: 2px solid #fff !important;
+}
+
+.css-udcb-container {
+	position: relative;
+}
+
+.css-udcb-bg-img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 60%;
+	height: 100%;
+	object-fit: cover;
+	border-start-start-radius: 3rem;
+	border-end-end-radius: 1rem;
+}
+
+.css-udcb-flex {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.css-udcb-card {
+	height: 100%;
+	border-radius: 0.5rem;
+	box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+	border: 4px solid #344767;
+	padding-top: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.css-udline {
+	border: 4px solid #344767;
+	border-radius: 0.5rem;
+	width: 4rem;
+	padding: 0.1px;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
+}
+
+.css-udcb-img {
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 50%;
+	margin-bottom: 1.5rem;
+	border: 4px solid #344767;
+	box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+}
+
+.css-udcb-h3 {
+	font-weight: 700;
+}
+
+@media (min-width: 240px) {
+	.userdetail-section {
+		margin: 1rem;
+	}
+
+	.css-udcb-bg-img {
+		display: none;
+	}
+
+	.css-udcb-flex {
+		width: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+		padding-bottom: 1.5rem;
+	}
+
+	.css-udline {
+		width: 3rem;
+	}
+
+	.css-udcb-card {
+		width: 100%;
+	}
+
+	.css-udcb-icon {
+		display: none;
+	}
+}
+
+@media (min-width: 375px) {
+	.css-udcb-icon {
+		display: inline;
+	}
+}
+
+@media (min-width: 576px) {
+	.userdetail-section {
+		margin: 1.5rem;
+	}
+
+	.css-udcb-bg-img {
+		display: inline;
+		width: 50%;
+	}
+
+	.css-udcb-flex {
+		width: 50%;
+		padding-left: 2.5rem;
+		padding-right: 2.5rem;
+	}
+}
+
+@media (min-width: 992px) {
+	.css-udcb-bg-img {
+		display: inline;
+		width: 60%;
+	}
+
+	.css-udcb-flex {
+		width: 40%;
+		padding-bottom: 6rem !important;
+	}
+
+	.css-udcb-card {
+		width: 18.5rem;
+		margin-top: 2rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	.main-section {
+		margin-left: 17.125rem;
+	}
+
+	.sidenav-pinned .main-section {
+		margin-left: 7.5rem;
+	}
+}

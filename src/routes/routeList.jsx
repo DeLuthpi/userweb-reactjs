@@ -3,6 +3,7 @@ import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Home from "../pages/Home"
 import UserList from "../pages/UserList"
+import UserDetail from "../pages/UserDetail"
 import NotFound from "../pages/NotFound"
 import { ProtectedRoute, ProtectedAfterLogin } from "./ProtectedRoute";
 
@@ -29,6 +30,13 @@ export const routeList = [
 		</ProtectedRoute>
 	},
 	{
+		path: "/user-list/user-detail/:id",
+		element:
+		<ProtectedRoute>
+			<UserDetail />
+		</ProtectedRoute>
+	},
+	{
 		path: "/login",
 		element:
 		<ProtectedAfterLogin>
@@ -44,6 +52,13 @@ export const routeList = [
 	},
 	{
 		path: "*",
+		element:
+		<ProtectedRoute>
+			<NotFound />
+		</ProtectedRoute>
+	},
+	{
+		path: "/not-found",
 		element:
 		<ProtectedRoute>
 			<NotFound />
