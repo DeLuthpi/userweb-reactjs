@@ -8,15 +8,15 @@ const Navbar = (props) => {
 	const [showSidebar, setShowSidebar] = useState(false);
 	const [winScroll, setWinScroll] = useState('');
 
-    useEffect(() => {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY < 100) {
-                setWinScroll('');
-            } else {
-                setWinScroll('css-blur');
-            }
-        });
-    }, [])
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			if (window.scrollY < 100) {
+				setWinScroll('');
+			} else {
+				setWinScroll('css-blur');
+			}
+		});
+	}, [])
 
 	const handleSideBar = () => {
 		setShowSidebar(!showSidebar);

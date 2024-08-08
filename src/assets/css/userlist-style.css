@@ -1,0 +1,110 @@
+.main-page {
+	background-color: #f8f9fa;
+	height: auto;
+	padding-top: 1.5rem;
+}
+
+.main-section {
+	transition-duration: 300ms;
+}
+
+.userlist-section {
+	margin: 1.5rem;
+}
+
+.ulch-flex {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ulch-col {
+	flex: 0 0 auto;
+}
+
+.ulch-text {
+	font-weight: 600;
+	line-height: 1.375;
+	margin-bottom: 0;
+}
+
+.ulch-btn {
+	--btn-padding-y: 0.5rem !important;
+	--btn-padding-x: 1rem !important;
+	--btn-font-size: 0.75rem !important;
+	--btn-border-radius: 0.5rem !important;
+	margin: 0 !important;
+	text-transform: none !important;
+}
+
+.css-ulcb {
+	padding-top: 0 !important;
+	padding-bottom: 0.5rem !important;
+}
+
+.css-ultable {
+	border-collapse: inherit;
+	margin-bottom: 1.5rem !important;
+	align-items: center !important;
+}
+
+.ulth-text {
+	font-weight: 700 !important;
+	font-size: 0.75rem !important;
+	line-height: 1.25;
+	color: #344767 !important;
+	text-transform: uppercase !important;
+	opacity: 0.7 !important;
+}
+
+.ulth-text-end {
+	text-align: right !important;
+}
+
+.ultb-text {
+	font-weight: 600 !important;
+	font-size: 0.875rem !important;
+	line-height: 1.5;
+	padding-right: 0.5rem !important;
+	padding-left: 0.5rem !important;
+}
+
+.ultb-text-end {
+	text-align: right !important;
+}
+
+.ulspan-text {
+	font-size: 0.875rem !important;
+	line-height: 1.5;
+}
+
+.ultb-btn-action {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 0.875rem;
+}
+
+@media (min-width: 240px) {
+	.userlist-section {
+		margin: 1rem;
+	}
+}
+
+@media (min-width: 576px) {
+	.userlist-section {
+		margin: 1.5rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	.main-section {
+		margin-left: 17.125rem;
+	}
+
+	.sidenav-pinned .main-section {
+		margin-left: 7.5rem;
+	}
+}

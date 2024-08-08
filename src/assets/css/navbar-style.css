@@ -145,6 +145,7 @@
 
 .css-text-logout {
 	display: none !important;
+	vertical-align: top;
 }
 
 @media (min-width: 240px) {
@@ -174,6 +175,8 @@
 		border: 2px solid #67748e;
 		padding: 0.15rem 0.75rem;
 		border-radius: 0.5rem;
+		background-color: rgba(21, 244, 238, 0.2);
+		transition-duration: 500ms;
 	}
 
 	.css-logout:hover {

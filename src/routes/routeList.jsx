@@ -2,6 +2,7 @@
 import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Home from "../pages/Home"
+import UserList from "../pages/UserList"
 import NotFound from "../pages/NotFound"
 import { ProtectedRoute, ProtectedAfterLogin } from "./ProtectedRoute";
 
@@ -11,6 +12,20 @@ export const routeList = [
 		element:
 		<ProtectedRoute>
 			<Home />
+		</ProtectedRoute>
+	},
+	{
+		path: "/home",
+		element:
+		<ProtectedRoute>
+			<Home />
+		</ProtectedRoute>
+	},
+	{
+		path: "/user-list",
+		element:
+		<ProtectedRoute>
+			<UserList />
 		</ProtectedRoute>
 	},
 	{

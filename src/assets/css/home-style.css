@@ -10,14 +10,18 @@
 
 .home-section {
 	margin: 1.5rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
 }
 
-@media (min-width: 992px) {
-	/* .main-page {
-		padding-top: 1.5rem;
-	} */
+@media (min-width: 240px) {
+	.home-section {
+		margin: 1rem;
+	}
+}
+
+@media (min-width: 576px) {
+	.home-section {
+		margin: 1.5rem;
+	}
 }
 
 @media (min-width: 1200px) {

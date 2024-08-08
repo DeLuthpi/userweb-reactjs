@@ -11,22 +11,7 @@ const Home = () => {
 			<main className="main-section">
 				<Navbar pages={'Home'} subPages={''} />
 				<section className='home-section'>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
-					<h1>Home page</h1>
+					<h1>Home Page</h1>
 				</section>
 			</main>
 		</div>
