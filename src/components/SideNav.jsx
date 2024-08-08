@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
 import '../assets/css/sidenavbar-style.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { logo, webName, sidenavMenu } from "../helpers/const";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SideNavbar = () => {
+	const { id } = useParams();
 
 	let path = String(window.location.pathname);
 	if (path === "/") {
 		path = "/home";
+	} else if (path === `/user-list/user-detail/${id}`) {
+		path = "/user-list";
 	}
 
 	const [currentPage, setCurrentPage] = useState(path);
