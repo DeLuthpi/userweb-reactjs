@@ -52,6 +52,14 @@ npm install --save @fortawesome/free-solid-svg-icons
 npm install --save @fortawesome/react-fontawesome
 ```
 
+### React-tooltip for showing tooltip
+
+following to install [React-tooltip](https://react-tooltip.com/) :
+
+```bash
+npm install react-tooltip
+```
+
 ## List of completed tasks :
 
 -   [x] Build website using react.js framework
