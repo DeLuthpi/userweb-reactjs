@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Tooltip } from 'react-tooltip';
 
 const UserList = () => {
 	const [users, setUsers] = useState([]);
@@ -39,7 +40,7 @@ const UserList = () => {
 									<h5 className="ulch-text">Users List</h5>
 								</div>
 								<div className="ulch-col">
-									<Link to="/user-list/add" className="btn bg-gradient-dark ulch-btn">
+									<Link to="/user-list/add" className="btn bg-gradient-dark ulch-btn" data-tooltip-id="my-tooltip" data-tooltip-content="Add User">
 										<FontAwesomeIcon icon="fa-solid fa-user-plus" />
 									</Link>
 								</div>
@@ -71,12 +72,13 @@ const UserList = () => {
 												</td>
 												<td className="ultb-text ultb-text-end">
 													<div className="ultb-btn-action">
-														<Link to={`/user-list/user-detail/${user.id}`}>
+														<Link to={`/user-list/user-detail/${user.id}`} data-tooltip-id="my-tooltip" data-tooltip-content="Detail User" >
 															<FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
 														</Link>
-														<Link to={`/user-list/delete/${user.id}`}>
+														<Link to={`/user-list/delete/${user.id}`} data-tooltip-id="my-tooltip" data-tooltip-content="Delete User">
 															<FontAwesomeIcon icon="fa-solid fa-trash-can" style={{ color: '#fd5c70' }} />
 														</Link>
+														<Tooltip id="my-tooltip" place="bottom" style={{ borderRadius: '10px' }} />
 													</div>
 												</td>
 											</tr>
