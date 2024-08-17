@@ -67,7 +67,7 @@ npm install react-tooltip
 -   [x] Users can log in using API endpoints [reqres](https://reqres.in/)
 -   [x] Users can see all user lists on the website
 -   [x] Users can see page details for each user
--   [ ] There is pagination on the Home Page
+-   [x] There is pagination on the Home Page
 -   [x] The website has implemented Protected Routes
 -   [x] The website has implemented a responsive website
--   [ ] Commit to github repository :tada:
+-   [x] Commit to github repository :tada:
