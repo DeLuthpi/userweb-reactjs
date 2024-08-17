@@ -21,4 +21,43 @@ const sidenavMenu = [
 	},
 ];
 
-export { logo, signUpIllustration, signInIllustration, patternLines, error404, webName, sidenavMenu };
+const dataStatistic = [
+	{
+		id: 1,
+		title: "Total User's",
+		data: 12,
+		icon: "fa-solid fa-users",
+	},
+	{
+		id: 2,
+		title: "Active User's",
+		data: 5,
+		icon: "fa-solid fa-user-check",
+	},
+	{
+		id: 3,
+		title: "New User's",
+		data: 2,
+		icon: "fa-solid fa-user-plus",
+	},
+	{
+		id: 4,
+		title: "Inactive User's",
+		data: 7,
+		icon: "fa-solid fa-user-xmark",
+	},
+	{
+		id: 5,
+		title: "User's Logged in",
+		data: 10,
+		icon: "fa-solid fa-user-clock",
+	},
+	{
+		id: 6,
+		title: "Today's Visitor's",
+		data: 25,
+		icon: "fa-solid fa-user-group",
+	},
+];
+
+export { logo, signUpIllustration, signInIllustration, patternLines, error404, webName, sidenavMenu, dataStatistic };

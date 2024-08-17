@@ -2,29 +2,11 @@
 import '../assets/css/home-style.css';
 import Navbar from '../components/Navbar';
 import SideNavbar from '../components/SideNav';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
 import { RingLoader } from 'react-spinners';
+import { dataStatistic } from "../helpers/const";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Home = () => {
-	const [users, setUsers] = useState([]);
-
-	const getUsers = () => {
-		axios
-		.get('https://reqres.in/api/users')
-		.then((res) => {
-			// console.log(res.data.data);
-			setUsers(res.data.data);
-		})
-		.catch((err) => {
-			console.log(err.response)
-		})
-	};
-
-	useEffect(() => {
-		getUsers()
-	}, []);
-
 	return (
 		<div className="main-page sidenav-show " id="main-page">
 			<SideNavbar />
@@ -35,18 +17,20 @@ const Home = () => {
 						<div className="hsr-col">
 							<div className="card card-plain hsr-card">
 								<div className="card-body hsr-cb">
-									<h2 className="hsr-cb-h2">Users List</h2>
+									<h2 className="hsr-cb-h2">Data Statistics</h2>
 								</div>
 							</div>
 							<div className="hsr-row-flex">
-								{users.map(user => (
-									<div className="card rflex-card" key={user.id}>
+								{dataStatistic.map(item => (
+									<div className="card hsr-rflex-card" key={item?.id}>
 										<div className="card-body">
 											<div className="cb-rflex">
-												<img className="rflex-cbimage" src={user.avatar} alt="user-image" />
-												<div className="rflex-col">
-													<h5 className="rflex-cbtitle">{user.first_name} {user.last_name}</h5>
-													<p className="rflex-cbtext">{user.email}</p>
+												<div className="hsr-rflex-icon-box">
+													<FontAwesomeIcon icon={item?.icon} className='hsr-rflex-icon' size='lg' inverse />
+												</div>
+												<div className="hsr-rflex-col">
+													<p className="hsr-rflex-cbtext">{item?.title}</p>
+													<h5 className="hsr-rflex-cbtitle">{item?.data}</h5>
 												</div>
 											</div>
 										</div>
@@ -55,7 +39,7 @@ const Home = () => {
 							</div>
 						</div>
 					</div>
-					<div className="home-animation">
+					<div className="react-animation">
 						<div className="circles">
 							<div></div>
 							<div></div>
