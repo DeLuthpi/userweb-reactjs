@@ -45,8 +45,11 @@ const Login = () => {
 			setInvalidPassword('');
 
 			localStorage.setItem('access_token', res.data.token);
+			toast.success('Login successfully. Redirect to home page...', {
+				autoClose: 2000,
+			});
 			setShowBgLoader(true);
-			setTimeout(() => showLoader(), 50);
+			showLoader();
 		})
 		// eslint-disable-next-line no-unused-vars
 		.catch((err) => {
@@ -56,10 +59,16 @@ const Login = () => {
 
 			if (email === '') {
 				errors['email'] = 'Email is required';
-				errors['password'] = '';
-				if (password !== '') setInvalidPassword('');
 				setInvalidEmail('is-invalid');
 				emailFocus.current.focus();
+
+				if (password === '') {
+					errors['password'] = 'Password is required';
+					setInvalidPassword('is-invalid');
+				} else {
+					errors['password'] = '';
+					setInvalidPassword('');
+				}
 			} else if (password === '') {
 				if(!regex.test(email)){
 					errors['email'] = 'Please enter the valid email';
@@ -83,7 +92,7 @@ const Login = () => {
 					setInvalidEmail('is-invalid');
 					emailFocus.current.focus();
 				} else {
-					toast.error('Failed :' + 'Only defined users succeed registration');
+					toast.error('Failed :' + 'Only defined users succeed logged in');
 				}
 			}
 			setErrors(errors);
@@ -137,14 +146,24 @@ const Login = () => {
 					</div>
 				</div>
 			</div>
-			<PuffLoader
-				color={"#F5F5F5"}
-				cssOverride={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: '50' }}
-				loading={loader}
-				size={150}
-				aria-label="Loading Spinner"
-				data-testid="loader"
-			/>
+			{loader &&
+				<div className="login-animation">
+					<div className="login-circles">
+						<div></div>
+						<div></div>
+						<div></div>
+						<span></span>
+					</div>
+					<PuffLoader
+						color={"#F5F5F5"}
+						cssOverride={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: '50' }}
+						loading={loader}
+						size={150}
+						aria-label="Loading Spinner"
+						data-testid="loader"
+					/>
+				</div>
+			}
 		</div>
 	);
 };

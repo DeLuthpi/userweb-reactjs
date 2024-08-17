@@ -34,7 +34,9 @@ const Register = () => {
 			setInvalidEmail('');
 			setInvalidPassword('');
 
-			toast.success('Registered successfully. Redirect to login page...');
+			toast.success('Registered successfully. Redirect to login page...', {
+				autoClose: 2200,
+			});
 			setTimeout(() => navigate('/login'), 2500);
 		})
 		// eslint-disable-next-line no-unused-vars
@@ -44,10 +46,16 @@ const Register = () => {
 
 			if (email === '') {
 				errors['email'] = 'Email is required';
-				errors['password'] = '';
-				if (password !== '') setInvalidPassword('');
 				setInvalidEmail('is-invalid');
 				emailFocus.current.focus();
+
+				if (password === '') {
+					errors['password'] = 'Password is required';
+					setInvalidPassword('is-invalid');
+				} else {
+					errors['password'] = '';
+					setInvalidPassword('');
+				}
 			} else if (password === '') {
 				if(!regex.test(email)){
 					errors['email'] = 'Please enter the valid email';
