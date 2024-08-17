@@ -121,6 +121,11 @@
 	width: 100%;
 }
 
+.hsr-rflex-card:hover {
+	transform: scale(1.05);
+	transition-duration: 500ms;
+}
+
 .cb-rflex {
 	display: flex;
 	flex-direction: row;

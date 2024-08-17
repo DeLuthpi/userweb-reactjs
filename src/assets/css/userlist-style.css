@@ -11,7 +11,7 @@
 .userlist-section {
 	margin: 1.5rem;
 	position: relative;
-	padding-bottom: 7.5rem;
+	padding-bottom: 4.5rem;
 }
 
 .react-animation {
@@ -119,6 +119,42 @@
 	justify-content: space-between;
 	gap: 1rem;
 	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.rflex-card:hover {
+	transform: scale(1.05);
+	transition-duration: 500ms;
+}
+
+.ulsr-footer-data {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.uslr-data-info {
+	font-size: 0.875rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.ulsr-data-pagination {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+
+.btn-pagination {
+	border-radius: 0.3rem;
+	border: 1px solid #344767;
+	font-size: 0.875rem;
 }
 
 .cb-rflex {
